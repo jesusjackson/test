@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat; // Correct way to import Material SCSS utilities
+
+@include mat.core(); // Ensures Material components work properly
+
+// Define cyan & orange color palettes correctly
+$primary: mat.m2-define-palette(mat.$m2-cyan-palette);
+$accent: mat.m2-define-palette(mat.$m2-orange-palette);
+$warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+// Create the theme
+$theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  ),
+));
+
+// Apply the theme globally
+@include mat.all-component-themes($theme);
+
+// Extract and set the Material theme background globally
+$background-color: mat.get-theme-color($theme, background, background);
+
+:root {
+  --mat-background: #{$background-color}; // Converts SCSS variable to CSS variable
+}
+
+// Apply background theme globally
+html, body {
+  background-color: var(--mat-background) !important;
+  color: mat.get-theme-color($theme, foreground, text);
+  .order-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 16px; /* Space between elements */
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  /* Centered container with proper margins */
+  .order-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Align h2 with the form and content */
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  /* Filters in a two-column grid */
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  /* Orders list in responsive grid */
+  .order-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  /* Order Card Styling */
+  .order-card {
+    padding: 15px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .order-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+}
