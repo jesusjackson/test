@@ -1,6 +1,6 @@
 import { AppDataSource } from '../data-source';
 import * as mysql from 'mysql2/promise';
-
+// All the credentials should be moved to a .env file for security
 export async function createDatabaseIfNotExists() {
   const connection = await mysql.createConnection({
     host: 'localhost',

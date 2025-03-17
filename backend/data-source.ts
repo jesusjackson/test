@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import * as path from 'path';
-
+// All the credentials should be moved to a .env file for security
 export const AppDataSource = new DataSource({
   type: 'mysql',
   host: 'localhost',
