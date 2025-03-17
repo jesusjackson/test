@@ -1,0 +1,59 @@
+<div class="mat-app-background">
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="order-form">
+    <h2>Create Order</h2>
+    <div class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Order Number</mat-label>
+        <input matInput formControlName="orderNumber" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Payment Description</mat-label>
+        <input matInput formControlName="paymentDescription" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Street Address</mat-label>
+        <input matInput formControlName="streetAddress" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Town</mat-label>
+        <input matInput formControlName="town" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="amount" type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Currency</mat-label>
+        <input matInput formControlName="currency" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-label>Payment Due Date</mat-label>
+        <input matInput formControlName="paymentDueDate" [matDatepicker]="paymentDueDatePicker" (click)="paymentDueDatePicker.open()"/>
+        <mat-datepicker #paymentDueDatePicker type="date"/>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="orderForm.invalid">
+        Create Order
+      </button>
+    </div>
+
+  </form>
+</div>

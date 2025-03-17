@@ -1,0 +1,15 @@
+<style>
+  .menu-button{
+    margin: 0 0.3rem;
+  }
+</style>
+<div class="mat-app-background">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-raised-button [routerLink]="['/']" class="menu-button">List</button>
+      <button mat-raised-button [routerLink]="['/form']" class="menu-button">Form</button>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+  <router-outlet />
+</div>
